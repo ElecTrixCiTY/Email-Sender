@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender</title>
+</head>
+
+<style>
+
+body{
+    background-color: beige;
+    display: flex;
+}
+
+.container{
+    width: 30rem;
+    height: 30rem;
+    /* border: 2px solid red; */
+    border-radius: 5px;
+    margin: auto;
+    background-color: #ffff;
+}
+
+h3{
+    color: purple;
+    font-size: 2em;
+    margin-left: 20%;
+}
+
+.btn{
+    width: 4.2em;
+    height: 2em;
+    font-size: 1em;
+    color: white;
+    background-color: rgb(16, 222, 88);
+    border: none;
+    border-radius: 1.2em 1em;
+    margin-left: 40%;
+}
+
+label{
+    color: blue;
+    margin: 10px;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+
+
+input{
+    width: 22em;
+    height: 1.6em;
+    /* margin-left: 5px; */
+}
+
+
+</style>
+
+<body>
+
+    {% if messageSent %}
+    <div class="container">
+        <h3>Email Sent Successfully</h3>
+        <p>Your email was sent successfully to {{ form.recipient }} </p>
+    </div>
+
+    {% else %}
+    <div class="container">
+        <h3>Send E-mail</h3>
+
+        <form action="" method="post">
+            {% csrf_token %} {{form.as_p}}
+            <br>
+            <div class="text-center">
+                <input class="btn" type="submit">
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    
+</body>
+</html>
